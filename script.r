@@ -53,3 +53,8 @@ group_by(normal_calls, CALL_TYPE_FINAL_D) %>% summarize(median = quantile(time_t
 ggplot(normal_calls) + geom_freqpoly(aes(time_to_arrive), bins = 100)
 
 filter(normal_calls, CALL_TYPE_FINAL_D %in% c("THEFT VEHICLE", "ALTERED CURRENCY", "SHOTSPOTTER", "SUSP PKG/DEVICE", "GRAFFITI", "BB GUN COMPLNT")) %>% ggplot() + geom_freqpoly(aes(x = time_to_arrive, y = ..density.., color = CALL_TYPE_FINAL_D), bins = 20)
+
+# to make png
+# png("file.png")
+# filter(normal_calls, CALL_TYPE_FINAL_D %in% c("THEFT VEHICLE", "ALTERED CURRENCY", "SHOTSPOTTER", "SUSP PKG/DEVICE", "GRAFFITI", "BB GUN COMPLNT")) %>% ggplot() + geom_freqpoly(aes(x = time_to_arrive, y = ..density.., color = CALL_TYPE_FINAL_D), bins = 20)
+# dev.off()
