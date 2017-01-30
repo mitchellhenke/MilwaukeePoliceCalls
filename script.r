@@ -48,22 +48,6 @@ calls <- filter(calls, !is.na(onscene_time)) %>% filter(!is.na(close_time)) %>% 
 
 normal_calls <- mutate(calls, time_to_arrive = as.numeric(time_to_arrive)/60) %>% filter(time_to_arrive < 180 & time_to_arrive > 1)
 
-
-
-
-
-
-
-
-
-
-
-jabril
-mdi
-location, call time, dispatch time, onscene time, close_time
-
-
-
 group_by(normal_calls, CALL_TYPE_FINAL_D) %>% summarize(median = quantile(time_to_arrive, c(.75)), count = n()) %>% arrange(desc(median)) %>% filter(count > 40) %>% print(n = 800)
 
 ggplot(normal_calls) + geom_freqpoly(aes(time_to_arrive), bins = 100)
